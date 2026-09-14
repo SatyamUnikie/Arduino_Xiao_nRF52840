@@ -33,7 +33,7 @@ void setup() {
   digitalWrite(LED_BLUE, HIGH);
 
   Bluefruit.begin();
-  Bluefruit.setName("XIAO_BLE_DEV");
+  Bluefruit.setName("XIAO_BLE");
 
   fetchDeviceInfo();
 

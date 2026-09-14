@@ -193,7 +193,7 @@ static const struct bt_conn_auth_cb app_auth_callbacks = {
 	.pairing_confirm = auth_pairing_confirm,
 };
 
-static const struct bt_conn_auth_info_cb app_auth_info_callbacks = {
+static struct bt_conn_auth_info_cb app_auth_info_callbacks = {
 	.pairing_complete = auth_pairing_complete,
 	.pairing_failed = auth_pairing_failed,
 };

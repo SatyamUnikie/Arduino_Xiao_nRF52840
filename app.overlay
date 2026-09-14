@@ -1,0 +1,40 @@
+#include <zephyr/dt-bindings/adc/nrf-saadc.h>
+#include <zephyr/dt-bindings/adc/adc.h>
+
+/ {
+	zephyr,user {
+		breakwire-power-gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+		battery-read-enable-gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
+		/* Optional for CONFIG_APP_BATTERY_USB_AWARE_ENABLE_GATING: active-high USB-present signal. */
+		/* battery-usb-present-gpios = <&gpio0 X GPIO_ACTIVE_HIGH>; */
+		io-channels = <&adc 1>, <&adc 7>;
+	};
+};
+
+&nfct {
+	status = "okay";
+};
+
+&adc {
+	status = "okay";
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	channel@1 {
+		reg = <1>;
+		zephyr,gain = "ADC_GAIN_1_6";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <12>;
+		zephyr,input-positive = <NRF_SAADC_AIN1>;
+	};
+
+	channel@7 {
+		reg = <7>;
+		zephyr,gain = "ADC_GAIN_1_6";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <12>;
+		zephyr,input-positive = <NRF_SAADC_AIN7>;
+	};
+};

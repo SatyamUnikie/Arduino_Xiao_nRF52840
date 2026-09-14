@@ -1,0 +1,90 @@
+source "Kconfig.zephyr"
+
+menu "Wire sensor application"
+
+config APP_SENSOR_SAMPLE_INTERVAL_MS
+	int "Sensor sampling interval (ms)"
+	default 2000
+	range 250 60000
+
+config APP_SENSOR_BROKEN_THRESHOLD
+	int "Breakwire broken threshold (raw ADC, 12-bit)"
+	default 2048
+	range 0 4095
+
+config APP_ADC_SAMPLE_COUNT
+	int "ADC sample count for sensor and battery averaging"
+	default 8
+	range 5 10
+
+config APP_BATTERY_EMPTY_MV
+	int "LiPo battery empty voltage (mV)"
+	default 3300
+	range 2500 4000
+
+config APP_BATTERY_FULL_MV
+	int "LiPo battery full voltage (mV)"
+	default 4200
+	range 3500 5000
+
+config APP_BATTERY_NOMINAL_MV
+	int "LiPo battery nominal voltage (mV)"
+	default 3700
+	range 3000 4000
+
+config APP_BATTERY_CAPACITY_MAH
+	int "LiPo battery capacity (mAh)"
+	default 400
+	range 50 10000
+
+config APP_BATTERY_DEFAULT_PERCENT
+	int "Battery fallback percent when ADC is unavailable"
+	default 50
+	range 0 100
+
+config APP_BATTERY_LOW_PERCENT
+	int "Battery low threshold (%) for red LED blink"
+	default 10
+	range 0 100
+
+config APP_BATTERY_LOW_CLEAR_PERCENT
+	int "Battery low clear threshold (%) for red LED blink hysteresis"
+	default 14
+	range 0 100
+
+config APP_BATTERY_DIVIDER_NUMERATOR
+	int "Battery divider numerator (Rtop + Rbottom)"
+	default 1510
+	range 1 10000
+	help
+	  Battery voltage is reconstructed from ADC voltage as:
+	  vbat_mv = vadc_mv * APP_BATTERY_DIVIDER_NUMERATOR /
+	            APP_BATTERY_DIVIDER_DENOMINATOR.
+	  XIAO nRF52840 uses approximately 1M/510k, so numerator is 1510.
+
+config APP_BATTERY_DIVIDER_DENOMINATOR
+	int "Battery divider denominator (Rbottom)"
+	default 510
+	range 1 10000
+	help
+	  For XIAO nRF52840's approximately 1M/510k divider, denominator is 510.
+
+config APP_BATTERY_USB_AWARE_ENABLE_GATING
+	bool "Disable battery read path between samples when USB power is absent"
+	default n
+	help
+	  Safe default keeps the battery read path enabled all the time.
+	  When enabled, the app can optionally disable the read path between
+	  samples, but only while USB power is absent. This requires defining
+	  zephyr,user battery-usb-present-gpios in app.overlay.
+
+config APP_ENABLE_NFC
+	bool "Enable NFC pairing gate scaffold"
+	default y
+
+config APP_BLE_ADVERTISING_TIMEOUT_MS
+	int "BLE advertising timeout after NFC trigger (ms)"
+	default 60000
+	range 5000 600000
+
+endmenu

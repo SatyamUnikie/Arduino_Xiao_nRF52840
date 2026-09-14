@@ -1,0 +1,45 @@
+{
+  "version": 4,
+  "configurations": [
+    {
+      "name": "Zephyr NCS xiao_ble",
+      "compilerPath": "C:/ncs/toolchains/dcbdc366a1/opt/zephyr-sdk/gnu/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc.exe",
+      "intelliSenseMode": "gcc-arm",
+      "cStandard": "c17",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "C:/ncs/v3.4.0/zephyr/include",
+        "C:/ncs/v3.4.0/zephyr/include/generated",
+        "C:/ncs/v3.4.0/zephyr/lib/libc/common/include",
+        "C:/ncs/v3.4.0/zephyr/lib/libc/picolibc/include",
+        "C:/ncs/v3.4.0/zephyr/lib/posix/c_lib_ext/getopt",
+        "C:/ncs/v3.4.0/zephyr/soc/nordic",
+        "C:/ncs/v3.4.0/zephyr/subsys",
+        "C:/ncs/v3.4.0/zephyr/subsys/bluetooth",
+        "C:/ncs/v3.4.0/zephyr/subsys/settings/include",
+        "C:/ncs/v3.4.0/nrf/include",
+        "C:/ncs/v3.4.0/nrf/lib/multithreading_lock",
+        "C:/ncs/v3.4.0/nrf/subsys/bluetooth/controller",
+        "C:/ncs/v3.4.0/nrf/subsys/settings/include",
+        "C:/ncs/v3.4.0/modules/hal/nordic/nrfx",
+        "C:/ncs/v3.4.0/modules/hal/nordic/nrfx/drivers/include",
+        "C:/ncs/v3.4.0/modules/hal/nordic/nrfx/bsp/stable",
+        "C:/ncs/v3.4.0/modules/hal/cmsis_6/CMSIS/Core/Include",
+        "C:/ncs/v3.4.0/nrfxlib/softdevice_controller/include",
+        "C:/ncs/v3.4.0/nrfxlib/mpsl/include"
+      ],
+      "defines": [
+        "__ZEPHYR__=1"
+      ],
+      "browse": {
+        "path": [
+          "${workspaceFolder}/**",
+          "C:/ncs/v3.4.0/zephyr/include",
+          "C:/ncs/v3.4.0/zephyr/include/generated",
+          "C:/ncs/v3.4.0/nrf/include",
+          "C:/ncs/v3.4.0/modules/hal/nordic/nrfx"
+        ]
+      }
+    }
+  ]
+}
